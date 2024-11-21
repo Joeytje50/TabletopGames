@@ -24,7 +24,7 @@ import static players.mcts.MCTSEnums.OpponentTreePolicy.MultiTree;
 public class MCTSPlayer extends AbstractPlayer implements IAnyTimePlayer {
 
     // Heuristics used for the agent
-    protected boolean debug = false;
+    protected boolean debug = true;
     protected SingleTreeNode root;
     protected Pair<Integer, AbstractAction> lastAction;
     List<Map<Object, Pair<Integer, Double>>> MASTStats;

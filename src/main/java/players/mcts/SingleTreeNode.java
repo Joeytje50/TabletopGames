@@ -668,6 +668,40 @@ public class SingleTreeNode {
         return actionChosen;
     }
 
+    /**
+     * Explores a full tree level, and recursively calls itself to explore the children, until
+     * the opponent gets a turn. Uses alpha-beta pruning to reduce search space, where possible.
+     * TODO: May need an implementation that continues until the turn number increments
+     * @param player The player whose turn needs to be evaluated
+     */
+    public void exploreFullTurn(int player, int depth) {
+        // stop if this node is another player's turn
+        if (decisionPlayer != player) return;
+        actionsInTree = new ArrayList<>();
+        currentNodeTrajectory = new ArrayList<>();
+        actionsInRollout = new ArrayList<>();
+        for (AbstractAction action : children.keySet()) {
+            AbstractGameState gs = getState().copy();
+            advanceState(gs, action, false);
+            SingleTreeNode nextNode = nextNodeInTree(action);
+            if (nextNode == null) {
+                nextNode = expandNode(action, gs);
+            }
+            nextNode.exploreFullTurn(player, depth + 1);
+            double[] heuristics = new double[] {
+                    params.heuristic.evaluateState(gs, 0),
+                    params.heuristic.evaluateState(gs, 1),
+            };
+            backUp(heuristics);
+            if (depth == 0) {
+                System.out.println(Arrays.toString(heuristics));
+            }
+        }
+        if (depth == 0) {
+            SingleTreeNode rootCopy = root;
+            System.out.println(rootCopy);
+        }
+    }
 
     /**
      * Returns the next node in the tree after taking the specified action from this one.

@@ -93,6 +93,10 @@ import static games.GameType.Mechanic.*;
  */
 public enum GameType {
 
+    Conquest(2, 2,
+            Arrays.asList(Strategy, Wargame, Abstract),
+            Arrays.asList(GridMovement, HandManagement),
+            CQGameState.class, CQForwardModel.class, CQParameters.class, CQGUIManager.class),
     /**
      * Game template example, see template in package {@link gametemplate}
      */
@@ -216,12 +220,7 @@ public enum GameType {
     WarOfTheToads(2, 2,
             Arrays.asList(Strategy, Abstract, Cards),
             Collections.singletonList(TrickTaking),
-            ToadGameState.class, ToadForwardModel.class, ToadParameters.class, ToadGUIManager.class),
-    Conquest(2, 2,
-            Arrays.asList(Strategy, Wargame, Abstract),
-            Arrays.asList(GridMovement, HandManagement),
-            CQGameState.class, CQForwardModel.class, CQParameters.class, CQGUIManager.class);
-
+            ToadGameState.class, ToadForwardModel.class, ToadParameters.class, ToadGUIManager.class);
 
     // Core classes where the game is defined
     final Class<? extends AbstractGameState> gameStateClass;

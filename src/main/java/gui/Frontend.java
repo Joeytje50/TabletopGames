@@ -159,7 +159,7 @@ public class Frontend extends GUI {
             );
 
             playerOptionsChoice[i] = new JComboBox<>(playerOptionsString);
-            playerOptionsChoice[i].setSelectedItem("Random");
+            playerOptionsChoice[i].setSelectedItem("HumanGUIPlayer");
 
             playerParameterEditWindow[i] = new JFrame();
             playerParameterEditWindow[i].getContentPane().setLayout(new BoxLayout(playerParameterEditWindow[i].getContentPane(), BoxLayout.Y_AXIS));

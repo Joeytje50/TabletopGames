@@ -12,6 +12,7 @@ import games.GameType;
 import gui.AbstractGUIManager;
 import gui.GUI;
 import gui.GamePanel;
+import players.PlayerFactory;
 import players.basicMCTS.BasicMCTSPlayer;
 import players.human.ActionController;
 import players.human.HumanConsolePlayer;
@@ -20,6 +21,8 @@ import players.mcts.MCTSPlayer;
 import players.mcts.MCTSPlayer;
 import players.rmhc.RMHCParams;
 import players.rmhc.RMHCPlayer;
+import players.search.MaxNSearchParameters;
+import players.search.MaxNSearchPlayer;
 import players.simple.FirstActionPlayer;
 import players.simple.OSLAPlayer;
 import players.simple.RandomPlayer;
@@ -838,8 +841,10 @@ public class Game {
         ArrayList<AbstractPlayer> players = new ArrayList<>();
 //        players.add(new RandomPlayer());
 //        players.add(new RandomPlayer());
-        players.add(new MCTSPlayer());
+//        players.add(PlayerFactory.createPlayers("json/players/gameSpecific/Conquest.json").get(0));
 //        players.add(new MCTSPlayer());
+        players.add(PlayerFactory.createPlayers("json/players/gameSpecific/Conquest_minimax.json").get(0));
+//        players.add(new HumanGUIPlayer(ac));
         players.add(new HumanGUIPlayer(ac));
 
 //        RMHCParams params = new RMHCParams();

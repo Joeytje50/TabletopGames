@@ -28,7 +28,7 @@ import static java.util.stream.Collectors.toList;
 public class GameEvaluator implements SolutionEvaluator {
 
     NTBEAParameters params;
-    public boolean debug = false;
+    public boolean debug = true;
     GameType game;
     AbstractParameters gameParams;
     ITPSearchSpace searchSpace;
